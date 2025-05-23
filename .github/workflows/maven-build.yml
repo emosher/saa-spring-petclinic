@@ -36,4 +36,5 @@ jobs:
       - name: Build with Maven Wrapper
         run: |
           printf '%s\n' "${{ secrets.SETTINGS_XML }}" > ~/.m2/settings.xml
+          cat ~/.m2/settings.xml
           ./mvnw -B package
