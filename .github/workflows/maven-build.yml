@@ -42,4 +42,5 @@ jobs:
 
       - name: Build with Maven Wrapper
         run: |
+          ./mvnw help:effective-settings
           ./mvnw -U clean package
