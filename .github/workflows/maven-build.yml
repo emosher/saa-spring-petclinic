@@ -35,6 +35,6 @@ jobs:
 
       - name: Build with Maven Wrapper
         run: |
-          echo “${{ secrets.SETTINGS_XML }}” | tee ~/.m2/settings.xml > /dev/null
+          echo “${{ secrets.SETTINGS_XML }}” | tee ~/.m2/settings.xml 
           cat ~/.m2/settings.xml
           ./mvnw -B package
