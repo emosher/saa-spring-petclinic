@@ -31,6 +31,7 @@ jobs:
           servers: '[{"id": "tanzu-spring-release", "username":  "${{ secrets.BC_USER }}", "password": "${{ secrets.BC_PWD }}"}]'
           repositories: '[{"id":"tanzu-spring-release", "name":"Spring Enterprise Supported Releases","url":"https://packages.broadcom.com/artifactory/spring-enterprise","snapshots":{"enabled":false}}]'
           pluginRepositories: '[{"id":"tanzu-spring-release", "name":"Spring Enterprise Supported Releases","url":"https://packages.broadcom.com/artifactory/spring-enterprise","snapshots":{"enabled":false}}]'
+          relativePath: ""
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
