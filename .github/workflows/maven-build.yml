@@ -24,21 +24,14 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
+          cache: 'maven'
 
       - name: Generates Maven Settings
         uses: 's4u/maven-settings-action@v3.1.0'
         with:
-          servers: '[{"id": "tanzu-spring-release", "username":  "${{ secrets.BC_USER }}", "password": "${{ secrets.BC_PWD }}"}]'
-          repositories: '[{"id":"tanzu-spring-release", "name":"Spring Enterprise Supported Releases","url":"https://packages.broadcom.com/artifactory/spring-enterprise","snapshots":{"enabled":false}}]'
-          pluginRepositories: '[{"id":"tanzu-spring-release", "name":"Spring Enterprise Supported Releases","url":"https://packages.broadcom.com/artifactory/spring-enterprise","snapshots":{"enabled":false}}]'
-
-      - name: Cache Maven dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          servers: '[{ "id": "tanzu-spring-release", "username": "${{ secrets.BC_USER }}", "password": "${{ secrets.BC_PWD }}" }]'
+          repositories: '[{ "id": "tanzu-spring-release", "name": "Spring Enterprise Supported Releases", "url": "https://packages.broadcom.com/artifactory/spring-enterprise", "snapshots":{"enabled":false} }]'
+          pluginRepositories: '[{ "id": "tanzu-spring-release", "name": "Spring Enterprise Supported Releases", "url": "https://packages.broadcom.com/artifactory/spring-enterprise", "snapshots": {"enabled":false} }]'
 
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
