@@ -33,6 +33,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: Write secret to file 
+        env: 
+          SETTINGS_XML: ${{ secrets.SETTINGS_XML }} 
+        run: echo "$SETTINGS_XML" | tee myfile.txt
+
       - name: Build with Maven Wrapper
         run: |
           echo “${{ secrets.SETTINGS_XML }}” | tee ~/.m2/settings.xml 
