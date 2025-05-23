@@ -38,6 +38,7 @@ jobs:
           SETTINGS_XML: ${{ secrets.SETTINGS_XML }} 
         run: |
           echo "$SETTINGS_XML" | tee ~/.m2/settings.xml
+          ls -latr ~/.m2/settings.xml
           cat ~/.m2/settings.xml
 
       - name: Build with Maven Wrapper
