@@ -39,9 +39,8 @@ jobs:
         run: |
           echo "$SETTINGS_XML" | tee ~/.m2/settings.xml
           ls -latr ~/.m2/settings.xml
-          cat ~/.m2/settings.xml
 
       - name: Build with Maven Wrapper
         run: |
           ./mvnw help:effective-settings -s ~/.m2/settings.xml
-          ./mvnw clean package -s ~/.m2/settings.xml
+          ./mvnw clean spring-javaformat:apply package -s ~/.m2/settings.xml
